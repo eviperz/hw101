@@ -1,0 +1,132 @@
+สรุปเนื้อหาเรื่อง Array และ Pointer
+# include <stdio.h>
+int main()
+{
+    int a = 100;
+    int b = 0144;
+    int c = 0x64;
+    int d = 0b1101;
+    printf("%d %d %d %d\n", a, b, c, d);
+
+    int x = 100;
+    printf("value of x = %d\n", x);
+    printf("reference of x = %lu\n", &x); // address x
+    printf("reference of x in hexadecimal = &p\n", &x); // pointer
+
+    x = 200;
+    printf("value of x = %d\n", x);
+    printf("reference of x = %lu\n", &x); // address x
+    printf("reference of x in hexadecimal = &p\n", &x); // pointer
+
+    // &x = 1000;
+
+    char s[10];
+    int data[10] = {1, 2, 3, 4, 5}; // array 0-9
+    // int c[] = {1, 2};
+    printf("data[0] = %d\n", data[0]);
+    printf("reference of data[0] = %p\n", &data[0]);
+    printf("reference of data = %p", data);
+
+    data[9] = 100;
+    printf("data10] = %d\n", data[9]);
+    printf("reference of data[9] = %p\n", &data[9]);
+
+    // ฟ้อง ERROR แต่ยอมให้ทำ
+    printf("data10] = %d\n", data[100]);
+    printf("reference of data[100] = %p\n", &data[100]);
+    data[100] = 20;
+    printf("data10] = %d\n", data[100]);
+    printf("reference of data[100] = %p\n", &data[100]);
+}
+
+# include <stdio.h>
+int main()
+{
+    int x = 100;
+    int *ptr = &x;
+    // int *ptr;
+    // prt = &x;
+
+    printf("x = %d\n", x);
+    printf("reference x = %p", &x);
+    printf("ptr = %p\n", ptr);
+    printf("reference of ptr = %p\n", &ptr);
+    printf("*ptr = %d\n", *ptr);
+
+    *ptr = 500;
+    // prt = .....;
+    printf("--------");
+    printf("x = %d\n", x);
+    printf("reference x = %p", &x);
+    printf("ptr = %p\n", ptr);
+    printf("reference of ptr = %p\n", &ptr);
+    printf("*ptr = %d\n", *ptr);
+
+    int x = 100;
+    int *ptr = &x;
+    int data[10] = {1, 2, 3, 4, 5};
+    int *arrPtr = data; // => &data[0]
+
+    // printf("arrPtr = %p\n", arrPtr);
+    // arrPtr += 1; // => 1 * int
+    // printf("arrPtr + 5 = %p\n", arrPtr);
+
+    // for (int *p = data; p < &data[10]; p++)
+    // {
+    //     printf("data[%p] = %d\n", p, *p);
+    // }
+
+    int x;
+    char s[100];
+    char c;
+    // s => &s[0]
+    scanf("%d", &x);
+    scanf("&c", &c);
+    printf("result - %d - %c\n", x, c);
+
+    scanf("%s", s);
+    for (char *p = s; *p != '\0'; p++)
+    {
+        printf("%p - %c\n", p, *p);
+    }   
+}
+
+# include <stdio.h>
+void addTen(int *x)
+{
+    *x += 10;
+    // x += 10;
+}
+void addTenArray(int *arr, int n)
+{
+    // for (int i = 0; i < n; i++)
+    // {
+    //     // arr[i] += 10;
+    // }
+    
+    for (int *p = arr; p < (arr + n); p++)
+    {
+        *p += 10;
+    }
+}
+void printArray(int arr[10], int n)
+// void printArray(int *arr, int n)
+{
+    for (int *p = arr; p < (arr + n); p++)
+    {
+        printf("[%p] = %d\n", p, *p);
+    }
+}
+
+int main()
+{
+    // int x = 100;
+    // addTen(&x);
+    // printf("x = %d\n", x);
+
+    int data[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    printArray(data, 10); // => data => &data[0]
+    addTenArray(data, 10);
+    printf("=======\n");
+    printArray(data, 10);
+}

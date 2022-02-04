@@ -1,0 +1,52 @@
+สรุปเนื้อหาเรื่อง Function
+# include <stdio.h>
+// void
+// ReturnType FunctionName(parameter)
+// {
+//     statement
+
+//     return ......
+// }
+
+int x = 1000; // Global
+int addTen(int x)
+{
+    printf("addTen x = %d\n", x);
+    x += 10;
+    printf("After added addTen x = %d\n", x);
+    return x;
+}
+
+int addThirty(int x)
+{
+    printf("addThirty x = %d\n", x);
+    // int x = 100; // Local
+    x = 100;
+    // while (1)
+    // {
+    //     int x = 10;
+    //     printf("%d\n", x);
+    // }
+    
+    x += 500;
+    printf("After added addThirty x = %d\n", x);
+}
+
+int main()
+{
+    int x = 10;
+    int y = addTen(x);
+    printf("In main x = %d, y = %d\n", x, y);
+    int z = addTwenty();
+    printf("In main2 x = %d, y = %d, z = %d\n", x, y, z);
+    z = addThirty(z);
+    printf("In main3 x = %d, y = %d, z = %d\n", x, y, z);
+}
+
+int addTwenty()
+{
+    printf("addTwenty x = %d\n", x);
+    x += 20;
+    printf("After added addTwenty x = %d\n", x);
+    return x;
+}
